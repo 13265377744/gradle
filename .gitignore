@@ -3,6 +3,7 @@
 # Some common .gitignore configurations: https://gist.github.com/octocat/9257657
 
 # Copy the next content on the .gitignore_global file:
+.sts4-cache
 
 .DS_Store
 hsf.lock

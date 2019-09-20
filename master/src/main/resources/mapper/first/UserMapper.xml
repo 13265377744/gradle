@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="haday.demo.mapper.first.UserMapper">
+
+    <resultMap id="userMap" type="haday.demo.entity.first.User">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="name" column="name" javaType="java.lang.String"></result>
+        <result property="salary" column="salary" javaType="java.math.BigDecimal"></result>
+        <result property="dat" column="dat" javaType="java.util.Date"></result>
+        <result property="sex" column="sex" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <select id="getAllUsers" resultMap="userMap">
+        select * from t_test
+    </select>
+
+    <insert id="addUser" parameterType="haday.demo.entity.first.User">
+        insert into t_test ( name, salary, dat, sex ) values ( #{name,jdbcType=VARCHAR}, #{salary,jdbcType=NUMERIC}, #{dat,jdbcType=DATE}, #{sex,jdbcType=BIT} )
+    </insert>
+
+    <delete id="deleteUser" parameterType="haday.demo.entity.first.User">
+        delete from t_test where name = #{name,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>
