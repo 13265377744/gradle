@@ -2,6 +2,8 @@ package haday.demo.mapper.first;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import haday.demo.entity.first.User;
 
 /**
@@ -9,6 +11,7 @@ import haday.demo.entity.first.User;
  * @Author: dingj
  * @TIME: 2019年9月12日 - 下午5:38:11
  */
+
 
 public interface UserMapper {
 

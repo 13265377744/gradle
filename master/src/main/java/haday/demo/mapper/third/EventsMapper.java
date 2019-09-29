@@ -1,10 +1,13 @@
 package haday.demo.mapper.third;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import haday.demo.entity.third.Events;
 import haday.demo.entity.third.EventsExample;
+
 
 public interface EventsMapper {
     long countByExample(EventsExample example);

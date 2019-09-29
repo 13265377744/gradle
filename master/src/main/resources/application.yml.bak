@@ -1,0 +1,50 @@
+server:
+   port: 8082
+#mybatis通用设置
+mybatis:
+   first:
+      type-aliases-package: haday.demo.first.entity
+      mapper-locations: classpath:mapper/first/*.xml
+      configuration.map-underscore-to-camel-case: true
+   second:
+      type-aliases-package: haday.demo.second.entity
+      mapper-locations: classpath:mapper/second/*.xml
+      configuration.map-underscore-to-camel-case: true
+   third:
+      type-aliases-package: haday.demo.third.entity
+      mapper-locations: classpath:mapper/third/*.xml
+      configuration.map-underscore-to-camel-case: true
+      
+#数据源设置
+spring:
+   datasource:
+      first:
+         url: jdbc:jtds:sqlserver://192.168.15.57:1555;DatabaseName=CO
+         driver-class-name: net.sourceforge.jtds.jdbc.Driver
+         username: sa
+         password: ht123
+      second:
+         url: jdbc:jtds:sqlserver://192.168.15.58:1555;DatabaseName=CO
+         driver-class-name: net.sourceforge.jtds.jdbc.Driver
+         username: ht
+         password: 7HJIv5kU
+      third:
+         url: jdbc:mysql://192.168.15.57:3306/sonar
+         driver-class-name: com.mysql.jdbc.Driver
+         username: root
+         password: ht123
+         
+pagehelper:
+    helperDialect: sqlserver
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
+
+
+logging: 
+   config: classpath:log4j2.xml
+
+
+   
+   
