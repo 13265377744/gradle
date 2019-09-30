@@ -20,15 +20,17 @@ spring:
    datasource:
       type: com.alibaba.druid.pool.DruidDataSource
       first:
-         url: jdbc:jtds:sqlserver://192.168.15.57:1555;DatabaseName=CO
+         jdbc-url: jdbc:jtds:sqlserver://192.168.15.57:1555;DatabaseName=CO
          driver-class-name: net.sourceforge.jtds.jdbc.Driver
          username: sa
          password: ht123
+         ConnectionTestQuery: SELECT 1
       second:
-         url: jdbc:jtds:sqlserver://192.168.15.58:1555;DatabaseName=CO
+         jdbc-url: jdbc:jtds:sqlserver://192.168.15.58:1555;DatabaseName=CO
          driver-class-name: net.sourceforge.jtds.jdbc.Driver
          username: ht
          password: 7HJIv5kU
+         ConnectionTestQuery: SELECT 1
       third:
          url: jdbc:mysql://192.168.15.57:3306/sonar
          driver-class-name: com.mysql.jdbc.Driver

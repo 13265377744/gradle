@@ -20,6 +20,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: "io.spring.dependency-management"
 apply plugin: "com.arenagod.gradle.MybatisGenerator"
 
 //引入 mybatis-generator 插件
@@ -34,6 +35,7 @@ jar {
     version =  '1.0'
 }
 
+
 repositories {
 	mavenLocal()
     mavenCentral()
@@ -45,10 +47,10 @@ targetCompatibility = 1.8
 
 //添加编译时的依赖
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:2.1.2.RELEASE")
-    testCompile('org.springframework.boot:spring-boot-starter-test:2.1.2.RELEASE')
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
-	compile ('org.springframework.boot:spring-boot-starter-log4j2:2.1.2.RELEASE')
+	compile ('org.springframework.boot:spring-boot-starter-log4j2')
 	// https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter
 	compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.1.10'
     // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
@@ -67,7 +69,8 @@ dependencies {
 	compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.5'
 	// https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter
 	compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.10'
-
+	
+	
 }
 
 

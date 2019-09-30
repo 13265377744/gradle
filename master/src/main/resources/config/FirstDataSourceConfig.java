@@ -1,4 +1,4 @@
-package api.config;
+package config;
 
 import javax.sql.DataSource;
 
@@ -8,10 +8,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -24,14 +25,14 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  */
 
 @Configuration
-@MapperScan(basePackages = "haday.demo.mapper.third", sqlSessionTemplateRef = "thirdSqlSessionTemplate")
-public class ThirdDataSourceConfig {
+@MapperScan(basePackages = "haday.demo.mapper.first", sqlSessionTemplateRef = "firstSqlSessionTemplate")
+public class FirstDataSourceConfig {
 
 	/**
 	 * 获取映射文件所在的路径
 	 */
-	@Value("${mybatis.third.mapper-locations}")
-	private String thirdMapperPath;
+	@Value("${mybatis.first.mapper-locations}")
+	private String firstMapperPath;
 
 	/**
 	 * @Author jason.tang
@@ -40,9 +41,10 @@ public class ThirdDataSourceConfig {
 	 * @Param []
 	 * @return javax.sql.DataSource
 	 */
-	@Bean(name = "thirdDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.third")
-	public DataSource thirdDataSource() {
+	@Bean(name = "firstDataSource")
+	@Primary
+	@ConfigurationProperties(prefix = "spring.datasource.first")
+	public DataSource firstDataSource() {
 		return DataSourceBuilder.create().build();
 	}
 
@@ -53,11 +55,12 @@ public class ThirdDataSourceConfig {
 	 * @Param [dataSource]
 	 * @return org.apache.ibatis.session.SqlSessionFactory
 	 */
-	@Bean(name = "thirdSqlSessionFactory")
-	public SqlSessionFactory sqlSessionFactory(@Qualifier("thirdDataSource") DataSource dataSource) throws Exception {
+	@Bean(name = "firstSqlSessionFactory")
+	@Primary
+	public SqlSessionFactory sqlSessionFactory(@Qualifier("firstDataSource") DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
-		Resource[] resources = new PathMatchingResourcePatternResolver().getResources(thirdMapperPath);
+		Resource[] resources = new PathMatchingResourcePatternResolver().getResources(firstMapperPath);
 		sqlSessionFactoryBean.setMapperLocations(resources);
 		return sqlSessionFactoryBean.getObject();
 	}
@@ -69,8 +72,9 @@ public class ThirdDataSourceConfig {
 	 * @Param [dataSource]
 	 * @return org.springframework.jdbc.datasource.DataSourceTransactionManager
 	 */
-	@Bean(name = "thirdTransactionManager")
-	public DataSourceTransactionManager transactionManager(@Qualifier("thirdDataSource") DataSource dataSource) {
+	@Bean(name = "firstTransactionManager")
+	@Primary
+	public DataSourceTransactionManager transactionManager(@Qualifier("firstDataSource") DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
 
@@ -81,9 +85,10 @@ public class ThirdDataSourceConfig {
 	 * @Param [sqlSessionFactory]
 	 * @return org.mybatis.spring.SqlSessionTemplate
 	 */
-	@Bean(name = "thirdSqlSessionTemplate")
+	@Bean(name = "firstSqlSessionTemplate")
+	@Primary
 	public SqlSessionTemplate sqlSessionTemplate(
-			@Qualifier("thirdSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+			@Qualifier("firstSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
 
