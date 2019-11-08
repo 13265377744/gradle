@@ -20,7 +20,6 @@
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 //引入 mybatis-generator 插件

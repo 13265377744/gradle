@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="haday.demo.mapper.fourth.ItgProjectMapper">
+  <resultMap id="BaseResultMap" type="haday.demo.entity.fourth.ItgProject">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company_code" jdbcType="VARCHAR" property="companyCode" />
+    <result column="busi_org" jdbcType="VARCHAR" property="busiOrg" />
+    <result column="investor" jdbcType="VARCHAR" property="investor" />
+    <result column="investor_cost_center" jdbcType="VARCHAR" property="investorCostCenter" />
+    <result column="wbs_code" jdbcType="VARCHAR" property="wbsCode" />
+    <result column="project_code" jdbcType="VARCHAR" property="projectCode" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="build_balance" jdbcType="DECIMAL" property="buildBalance" />
+    <result column="build_date" jdbcType="DATE" property="buildDate" />
+    <result column="budget" jdbcType="DECIMAL" property="budget" />
+    <result column="accumulated_interest" jdbcType="DECIMAL" property="accumulatedInterest" />
+    <result column="interest_period" jdbcType="VARCHAR" property="interestPeriod" />
+    <result column="interest" jdbcType="DECIMAL" property="interest" />
+    <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="last_update_name" jdbcType="VARCHAR" property="lastUpdateName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, company_code, busi_org, investor, investor_cost_center, wbs_code, project_code, 
+    project_name, build_balance, build_date, budget, accumulated_interest, interest_period, 
+    interest, last_update_date, last_update_by, create_date, create_by, create_name, 
+    last_update_name
+  </sql>
+  <select id="selectByExample" parameterType="haday.demo.entity.fourth.ItgProjectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_ic_itg_build_project
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_ic_itg_build_project
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_ic_itg_build_project
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="haday.demo.entity.fourth.ItgProjectExample">
+    delete from t_ic_itg_build_project
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="haday.demo.entity.fourth.ItgProject">
+    insert into t_ic_itg_build_project (id, company_code, busi_org, 
+      investor, investor_cost_center, wbs_code, 
+      project_code, project_name, build_balance, 
+      build_date, budget, accumulated_interest, 
+      interest_period, interest, last_update_date, 
+      last_update_by, create_date, create_by, 
+      create_name, last_update_name)
+    values (#{id,jdbcType=BIGINT}, #{companyCode,jdbcType=VARCHAR}, #{busiOrg,jdbcType=VARCHAR}, 
+      #{investor,jdbcType=VARCHAR}, #{investorCostCenter,jdbcType=VARCHAR}, #{wbsCode,jdbcType=VARCHAR}, 
+      #{projectCode,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{buildBalance,jdbcType=DECIMAL}, 
+      #{buildDate,jdbcType=DATE}, #{budget,jdbcType=DECIMAL}, #{accumulatedInterest,jdbcType=DECIMAL}, 
+      #{interestPeriod,jdbcType=VARCHAR}, #{interest,jdbcType=DECIMAL}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
+      #{lastUpdateBy,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, 
+      #{createName,jdbcType=VARCHAR}, #{lastUpdateName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="haday.demo.entity.fourth.ItgProject">
+    insert into t_ic_itg_build_project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyCode != null">
+        company_code,
+      </if>
+      <if test="busiOrg != null">
+        busi_org,
+      </if>
+      <if test="investor != null">
+        investor,
+      </if>
+      <if test="investorCostCenter != null">
+        investor_cost_center,
+      </if>
+      <if test="wbsCode != null">
+        wbs_code,
+      </if>
+      <if test="projectCode != null">
+        project_code,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="buildBalance != null">
+        build_balance,
+      </if>
+      <if test="buildDate != null">
+        build_date,
+      </if>
+      <if test="budget != null">
+        budget,
+      </if>
+      <if test="accumulatedInterest != null">
+        accumulated_interest,
+      </if>
+      <if test="interestPeriod != null">
+        interest_period,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date,
+      </if>
+      <if test="lastUpdateBy != null">
+        last_update_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createName != null">
+        create_name,
+      </if>
+      <if test="lastUpdateName != null">
+        last_update_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="busiOrg != null">
+        #{busiOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="investor != null">
+        #{investor,jdbcType=VARCHAR},
+      </if>
+      <if test="investorCostCenter != null">
+        #{investorCostCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="wbsCode != null">
+        #{wbsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null">
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildBalance != null">
+        #{buildBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="buildDate != null">
+        #{buildDate,jdbcType=DATE},
+      </if>
+      <if test="budget != null">
+        #{budget,jdbcType=DECIMAL},
+      </if>
+      <if test="accumulatedInterest != null">
+        #{accumulatedInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="interestPeriod != null">
+        #{interestPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=DECIMAL},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        #{lastUpdateBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null">
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateName != null">
+        #{lastUpdateName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="haday.demo.entity.fourth.ItgProjectExample" resultType="java.lang.Long">
+    select count(*) from t_ic_itg_build_project
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_ic_itg_build_project
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.companyCode != null">
+        company_code = #{record.companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busiOrg != null">
+        busi_org = #{record.busiOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.investor != null">
+        investor = #{record.investor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.investorCostCenter != null">
+        investor_cost_center = #{record.investorCostCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wbsCode != null">
+        wbs_code = #{record.wbsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCode != null">
+        project_code = #{record.projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectName != null">
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildBalance != null">
+        build_balance = #{record.buildBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.buildDate != null">
+        build_date = #{record.buildDate,jdbcType=DATE},
+      </if>
+      <if test="record.budget != null">
+        budget = #{record.budget,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accumulatedInterest != null">
+        accumulated_interest = #{record.accumulatedInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.interestPeriod != null">
+        interest_period = #{record.interestPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interest != null">
+        interest = #{record.interest,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lastUpdateDate != null">
+        last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdateBy != null">
+        last_update_by = #{record.lastUpdateBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.createName != null">
+        create_name = #{record.createName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateName != null">
+        last_update_name = #{record.lastUpdateName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_ic_itg_build_project
+    set id = #{record.id,jdbcType=BIGINT},
+      company_code = #{record.companyCode,jdbcType=VARCHAR},
+      busi_org = #{record.busiOrg,jdbcType=VARCHAR},
+      investor = #{record.investor,jdbcType=VARCHAR},
+      investor_cost_center = #{record.investorCostCenter,jdbcType=VARCHAR},
+      wbs_code = #{record.wbsCode,jdbcType=VARCHAR},
+      project_code = #{record.projectCode,jdbcType=VARCHAR},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      build_balance = #{record.buildBalance,jdbcType=DECIMAL},
+      build_date = #{record.buildDate,jdbcType=DATE},
+      budget = #{record.budget,jdbcType=DECIMAL},
+      accumulated_interest = #{record.accumulatedInterest,jdbcType=DECIMAL},
+      interest_period = #{record.interestPeriod,jdbcType=VARCHAR},
+      interest = #{record.interest,jdbcType=DECIMAL},
+      last_update_date = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      last_update_by = #{record.lastUpdateBy,jdbcType=BIGINT},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=BIGINT},
+      create_name = #{record.createName,jdbcType=VARCHAR},
+      last_update_name = #{record.lastUpdateName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="haday.demo.entity.fourth.ItgProject">
+    update t_ic_itg_build_project
+    <set>
+      <if test="companyCode != null">
+        company_code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="busiOrg != null">
+        busi_org = #{busiOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="investor != null">
+        investor = #{investor,jdbcType=VARCHAR},
+      </if>
+      <if test="investorCostCenter != null">
+        investor_cost_center = #{investorCostCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="wbsCode != null">
+        wbs_code = #{wbsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null">
+        project_code = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildBalance != null">
+        build_balance = #{buildBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="buildDate != null">
+        build_date = #{buildDate,jdbcType=DATE},
+      </if>
+      <if test="budget != null">
+        budget = #{budget,jdbcType=DECIMAL},
+      </if>
+      <if test="accumulatedInterest != null">
+        accumulated_interest = #{accumulatedInterest,jdbcType=DECIMAL},
+      </if>
+      <if test="interestPeriod != null">
+        interest_period = #{interestPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=DECIMAL},
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        last_update_by = #{lastUpdateBy,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateName != null">
+        last_update_name = #{lastUpdateName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="haday.demo.entity.fourth.ItgProject">
+    update t_ic_itg_build_project
+    set company_code = #{companyCode,jdbcType=VARCHAR},
+      busi_org = #{busiOrg,jdbcType=VARCHAR},
+      investor = #{investor,jdbcType=VARCHAR},
+      investor_cost_center = #{investorCostCenter,jdbcType=VARCHAR},
+      wbs_code = #{wbsCode,jdbcType=VARCHAR},
+      project_code = #{projectCode,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      build_balance = #{buildBalance,jdbcType=DECIMAL},
+      build_date = #{buildDate,jdbcType=DATE},
+      budget = #{budget,jdbcType=DECIMAL},
+      accumulated_interest = #{accumulatedInterest,jdbcType=DECIMAL},
+      interest_period = #{interestPeriod,jdbcType=VARCHAR},
+      interest = #{interest,jdbcType=DECIMAL},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      last_update_by = #{lastUpdateBy,jdbcType=BIGINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_name = #{createName,jdbcType=VARCHAR},
+      last_update_name = #{lastUpdateName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

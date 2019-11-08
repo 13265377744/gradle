@@ -1,19 +1,23 @@
 server:
-   port: 8082
+  port: 8082
 #mybatis通用设置
 mybatis:
-   first:
-      type-aliases-package: haday.demo.entity.first
-      mapper-locations: classpath:mapper/first/*.xml
-      configuration.map-underscore-to-camel-case: true
-   second:
-      type-aliases-package: haday.demo.entity.second
-      mapper-locations: classpath:mapper/second/*.xml
-      configuration.map-underscore-to-camel-case: true
-   third:
-      type-aliases-package: haday.demo.entity.third
-      mapper-locations: classpath:mapper/third/*.xml
-      configuration.map-underscore-to-camel-case: true
+  first:
+    type-aliases-package: haday.demo.entity.first
+    mapper-locations: classpath:mapper/first/*.xml
+    configuration.map-underscore-to-camel-case: true
+  second:
+    type-aliases-package: haday.demo.entity.second
+    mapper-locations: classpath:mapper/second/*.xml
+    configuration.map-underscore-to-camel-case: true
+  third:
+    type-aliases-package: haday.demo.entity.third
+    mapper-locations: classpath:mapper/third/*.xml
+    configuration.map-underscore-to-camel-case: true
+  fourth:
+    type-aliases-package: haday.demo.entity.fourth
+    mapper-locations: classpath:mapper/fourth/*.xml
+    configuration.map-underscore-to-camel-case: true
       
 #数据源设置
 spring:
@@ -36,6 +40,11 @@ spring:
          driver-class-name: com.mysql.jdbc.Driver
          username: root
          password: ht123
+      fourth:
+         url: jdbc:mysql://10.10.203.4:3306/uat_fs?useSSL=false
+         driver-class-name: com.mysql.jdbc.Driver
+         username: dev_ht
+         password: Dev#1234
          
 pagehelper:
     helperDialect: sqlserver

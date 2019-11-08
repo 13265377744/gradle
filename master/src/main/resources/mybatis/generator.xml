@@ -28,14 +28,15 @@
 				userId="ht" password="7HJIv5kU">
 		</jdbcConnection> -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                      connectionURL="jdbc:mysql://192.168.15.57:3306/sonar"
-                      userId="root"
-                      password="ht123"></jdbcConnection>
+                      connectionURL="jdbc:mysql://10.10.203.4:3306/uat_fs"
+                      userId="dev_ht"
+                      password="Dev#1234">
+		</jdbcConnection>
 
 		<!--生成实体类的位置以及包的名字 -->
 		<!--同样Mac用户：targetProject 为全路径 -->
 		<javaModelGenerator
-				targetPackage="haday.demo.generator" targetProject="C:/Project/WorkSpace3/test/src/main/java">
+				targetPackage="haday.demo.generator" targetProject=".\src\main\java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="true" />
 			<!-- 从数据库返回的值被清理前后的空格 -->
@@ -46,7 +47,7 @@
 		<!--生成映射文件存放位置 -->
 		<!--同样Mac用户：targetProject 为全路径 -->
 		<sqlMapGenerator targetPackage="haday.demo.generator"
-						 targetProject="C:/Project/WorkSpace3/test/src/main/java">
+						 targetProject=".\src\main\java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
@@ -54,7 +55,7 @@
 		<!--生成Dao类存放位置,mapper接口生成的位置 -->
 		<!--同样Mac用户：targetProject 为全路径 -->
 		<javaClientGenerator type="XMLMAPPER"
-							 targetPackage="haday.demo.generator" targetProject="C:/Project/WorkSpace3/test/src/main/java">
+							 targetPackage="haday.demo.generator" targetProject=".\src\main\java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
@@ -63,7 +64,7 @@
 		<!--<table tableName="%"> -->
 		<!--<generatedKey column="id" sqlStatement="Mysql" identity="true" /> -->
 		<!--</table> -->
-		<table tableName="events" domainObjectName="Events"
+		<table tableName="t_ic_itg_build_project" domainObjectName="ItgProject"
 			   enableCountByExample="true" enableUpdateByExample="true"
 			   enableDeleteByExample="true" enableSelectByExample="true"
 			   selectByExampleQueryId="true">
