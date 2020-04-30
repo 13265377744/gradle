@@ -10,6 +10,7 @@ import haday.demo.entity.second.FirptQuotaExample;
 
 
 public interface FirptQuotaMapper {
+
     long countByExample(FirptQuotaExample example);
 
     int deleteByExample(FirptQuotaExample example);
@@ -31,4 +32,5 @@ public interface FirptQuotaMapper {
     int updateByPrimaryKeySelective(FirptQuota record);
 
     int updateByPrimaryKey(FirptQuota record);
+
 }

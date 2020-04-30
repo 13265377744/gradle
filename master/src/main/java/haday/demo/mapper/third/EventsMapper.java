@@ -10,6 +10,7 @@ import haday.demo.entity.third.EventsExample;
 
 
 public interface EventsMapper {
+
     long countByExample(EventsExample example);
 
     int deleteByExample(EventsExample example);
@@ -31,4 +32,5 @@ public interface EventsMapper {
     int updateByPrimaryKeySelective(Events record);
 
     int updateByPrimaryKey(Events record);
+
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ItgProjectMapper {
+
     long countByExample(ItgProjectExample example);
 
     int deleteByExample(ItgProjectExample example);
@@ -27,4 +28,5 @@ public interface ItgProjectMapper {
     int updateByPrimaryKeySelective(ItgProject record);
 
     int updateByPrimaryKey(ItgProject record);
+
 }

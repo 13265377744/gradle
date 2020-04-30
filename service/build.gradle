@@ -57,7 +57,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas
 	compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.17'
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
-	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	compile("org.projectlombok:lombok:1.18.8")
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
 	// https://mvnrepository.com/artifact/com.alibaba/fastjson
 	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.58'
 	// https://mvnrepository.com/artifact/cn.minsin/mutils-core
