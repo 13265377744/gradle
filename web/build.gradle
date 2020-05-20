@@ -26,4 +26,9 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+
+    compile 'cn.hutool:hutool-all:5.2.3'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    compile 'org.apache.poi:poi-ooxml:4.1.2'
+
 }
