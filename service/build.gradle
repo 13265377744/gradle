@@ -5,7 +5,7 @@
  * For more details take a look at the Java Libraries chapter in the Gradle
  * User Manual available at https://docs.gradle.org/5.6/userguide/java_library_plugin.html
  */
- 
+
  buildscript {
     repositories {
     	mavenLocal()
@@ -14,8 +14,6 @@
     dependencies {
         //使用1.5.8.RELEASE版本的Spring框架
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
-
-
     }
 }
 
@@ -69,6 +67,5 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile 'cn.hutool:hutool-all:5.3.3'
-    
-    
+
 }

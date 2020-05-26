@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="haday.demo.mapper.fourth.ItgProjectMapper">
-  <resultMap id="BaseResultMap" type="haday.demo.entity.fourth.ItgProject">
+<mapper namespace="gradle.master.mapper.fourth.ItgProjectMapper">
+  <resultMap id="BaseResultMap" type="gradle.master.entity.fourth.ItgProject">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="company_code" jdbcType="VARCHAR" property="companyCode" />
     <result column="busi_org" jdbcType="VARCHAR" property="busiOrg" />
@@ -87,7 +87,7 @@
     interest, last_update_date, last_update_by, create_date, create_by, create_name, 
     last_update_name
   </sql>
-  <select id="selectByExample" parameterType="haday.demo.entity.fourth.ItgProjectExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="gradle.master.entity.fourth.ItgProjectExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -112,13 +112,13 @@
     delete from t_ic_itg_build_project
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="haday.demo.entity.fourth.ItgProjectExample">
+  <delete id="deleteByExample" parameterType="gradle.master.entity.fourth.ItgProjectExample">
     delete from t_ic_itg_build_project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="haday.demo.entity.fourth.ItgProject">
+  <insert id="insert" parameterType="gradle.master.entity.fourth.ItgProject">
     insert into t_ic_itg_build_project (id, company_code, busi_org, 
       investor, investor_cost_center, wbs_code, 
       project_code, project_name, build_balance, 
@@ -134,7 +134,7 @@
       #{lastUpdateBy,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, 
       #{createName,jdbcType=VARCHAR}, #{lastUpdateName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="haday.demo.entity.fourth.ItgProject">
+  <insert id="insertSelective" parameterType="gradle.master.entity.fourth.ItgProject">
     insert into t_ic_itg_build_project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -261,7 +261,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="haday.demo.entity.fourth.ItgProjectExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="gradle.master.entity.fourth.ItgProjectExample" resultType="java.lang.Long">
     select count(*) from t_ic_itg_build_project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -361,7 +361,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="haday.demo.entity.fourth.ItgProject">
+  <update id="updateByPrimaryKeySelective" parameterType="gradle.master.entity.fourth.ItgProject">
     update t_ic_itg_build_project
     <set>
       <if test="companyCode != null">
@@ -424,7 +424,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="haday.demo.entity.fourth.ItgProject">
+  <update id="updateByPrimaryKey" parameterType="gradle.master.entity.fourth.ItgProject">
     update t_ic_itg_build_project
     set company_code = #{companyCode,jdbcType=VARCHAR},
       busi_org = #{busiOrg,jdbcType=VARCHAR},

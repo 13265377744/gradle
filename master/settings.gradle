@@ -9,4 +9,4 @@
 
 rootProject.name = 'master'
 
-include 'api','web','service'
+include 'web','service'

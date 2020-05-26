@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="haday.demo.mapper.second.FirptQuotaMapper">
-  <resultMap id="BaseResultMap" type="haday.demo.entity.second.FirptQuota">
+<mapper namespace="gradle.master.mapper.second.FirptQuotaMapper">
+  <resultMap id="BaseResultMap" type="gradle.master.entity.second.FirptQuota">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     id, code, name, unit, source
   </sql>
-  <select id="selectByExample" parameterType="haday.demo.entity.second.FirptQuotaExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="gradle.master.entity.second.FirptQuotaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,19 +94,19 @@
     delete from firpt_quota
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="haday.demo.entity.second.FirptQuotaExample">
+  <delete id="deleteByExample" parameterType="gradle.master.entity.second.FirptQuotaExample">
     delete from firpt_quota
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="haday.demo.entity.second.FirptQuota">
+  <insert id="insert" parameterType="gradle.master.entity.second.FirptQuota">
     insert into firpt_quota (id, code, name, 
       unit, source)
     values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{unit,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="haday.demo.entity.second.FirptQuota">
+  <insert id="insertSelective" parameterType="gradle.master.entity.second.FirptQuota">
     insert into firpt_quota
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="haday.demo.entity.second.FirptQuotaExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="gradle.master.entity.second.FirptQuotaExample" resultType="java.lang.Long">
     select count(*) from firpt_quota
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -183,7 +183,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="haday.demo.entity.second.FirptQuota">
+  <update id="updateByPrimaryKeySelective" parameterType="gradle.master.entity.second.FirptQuota">
     update firpt_quota
     <set>
       <if test="code != null">
@@ -201,7 +201,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="haday.demo.entity.second.FirptQuota">
+  <update id="updateByPrimaryKey" parameterType="gradle.master.entity.second.FirptQuota">
     update firpt_quota
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
